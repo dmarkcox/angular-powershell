@@ -1,35 +1,33 @@
 # Docker: The Basics
-Frequently Asked Questions
-
-
 docker run -rm -ti ubuntu sleep 5
 docker run -ti ubuntu bash -c "sleep 3; echo all done"
 docker run -d -ti ubuntu bash
 docker ps
 docker attach suspicious_williams bash
-docker run --name example -d ubuntu bash -c "love /etc/password"
+docker run --name example -d ubuntu bash -c "/etc/password"
 docker logs example
 
-stopping and removing containers
-docker run -ti ubuntu bash
-docker ps 
+docker network ls	        List networks
+docker network create	    Create a network
+docker network inspect	    Display detailed information on one or more networks
+docker network connect	    Connect a container to a network
+docker network disconnect	Disconnect a container from a network
+docker network prune	    Remove all unused networks
+docker network rm	        Remove one or more networks
+
 docker kill fevent_mclean
-docker ps -l 
 docker rm example
 
-Memory limits
-docker run --memory maximum-allowed-memory image-name command
-
+Container Networking
 don't let containers fetch dependencies when they start
 make containers include dependencies
 dont leave important things in unnamed stopped containers
-
-Container Networking
 connect containers together
 containers can talk to each other
-expose/publish a port -- primate networks
 
-docker run -rm -ti -p 45678:45678 -p 45679:45679 --name echo-server ubuntu:14.04 bash
+expose/publish a port -- primate networks
+Memory limits
+docker run --memory maximum-allowed-memory image-name commandocker run -rm -ti -p 45678:45678 -p 45679:45679 --name echo-server ubuntu:14.04 bash
 
 netcat:
 nc -lp 45678 | nc -lp 45679
@@ -70,5 +68,4 @@ nc dogserver 1234
 docker network create catsonly
 docker network connect catsonly catserver
 docker run --rm --ti --net catsonly --name bobcatserver ubuntu:14.04 bash
-ping catserver
-ping dogserver
+

@@ -1,0 +1,1 @@
+docker run --rm -ti --net learning --name catserver ubuntu:latest bash
